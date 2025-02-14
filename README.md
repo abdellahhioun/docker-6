@@ -9,6 +9,7 @@ A complete Docker Compose setup demonstrating a multi-service architecture with 
 - [API Documentation](#api-documentation)
 - [Database Access](#database-access)
 - [Troubleshooting Guide](#troubleshooting-guide)
+- [Screenshots](#screenshots)
 
 ## Services Overview
 
@@ -119,15 +120,24 @@ docker-compose logs database
 
 > 📌 **Note**: This project requires Docker Desktop running in Linux container mode.
 
+## Screenshots
 
 API Response Test
 
-test_api_endpoint.png
+![API Response Test](test_api_endpoint.png)
 
 Backend Logs
 
-container_logs.png
+![Backend Logs](container_logs.png)
 
 Network Configuration
 
-network_configuration.png
+![Network Configuration](network_configuration.png)
+
+Database
+
+![Database](database.png)
+
+Create Tables
+
+![Create Tables](creat-table.png)
