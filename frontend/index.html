@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Statut de l'API</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .connected { background: #d4edda; color: #155724; }
+        .disconnected { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Statut de l'application</h1>
+    <div id="status" class="status">Chargement...</div>
+
+    <script>
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                const statusDiv = document.getElementById('status');
+                statusDiv.className = `status ${data.db_status === 'connected' ? 'connected' : 'disconnected'}`;
+                statusDiv.innerHTML = `
+                    <h2>État de la base de données: ${data.db_status}</h2>
+                    ${data.current_time ? `Heure du serveur: ${new Date(data.current_time).toLocaleString()}` : ''}
+                `;
+            })
+            .catch(error => {
+                document.getElementById('status').className = 'status disconnected';
+                document.getElementById('status').innerHTML = 'Erreur de connexion au backend';
+            });
+    </script>
+</body>
+</html>
